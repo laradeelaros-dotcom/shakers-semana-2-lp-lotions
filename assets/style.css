@@ -1,5 +1,5 @@
 body {
-    background-color:blueviolet
+    background-color:rgb(21, 14, 49)
 }
 
 
@@ -10,6 +10,6 @@ body {
 }
 
 .main_product {
-    border: 1px solid rgb(79, 187, 187);
+    border: 3px solid rgb(79, 187, 187);
     padding: 10px;
 }
