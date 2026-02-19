@@ -1,27 +1,7 @@
 <h1>{{ page.title }}</h1>
 <p>{{ page.content }}</p>
-
-{% assign product = all_products['principal-locao'] %}
-<p>
-  <b>Título do Produto:
-  </b>
-  {{ product.title }}</p>
-<p>
-  <b>Preço:
-  </b>
-  {{ product.price | money }}</p>
-<img
-  src="{{ product.featured_image.src |  image_url: width: '250px'  }}"
-  alt="product.featured_image.alt"
-  width="250px"
-  height="auto" />
-
-{% assign collection = collections['magic'] %}
-
-<h2>{{ collection.title }}</h2>
-<h3>{{ collection.description }}</h3>
-
-{% for product in collection.products %}
+<div class="main_product">
+  {% assign product = all_products['principal-locao'] %}
   <p>
     <b>Título do Produto:
     </b>
@@ -31,11 +11,36 @@
     </b>
     {{ product.price | money }}</p>
   <img
-    src="{{ product.featured_image.src |  image_url: width: '100px'  }}"
+    src="{{ product.featured_image.src |  image_url: width: '250px'  }}"
     alt="product.featured_image.alt"
-    width="100px"
+    width="250px"
     height="auto" />
-{% endfor %}
+</div>
+
+
+{% assign collection = collections['magic'] %}
+<h2>{{ collection.title }}</h2>
+<h3>{{ collection.description }}</h3>
+
+
+<div class="all_products">
+  {% for product in collection.products %}
+    <p>
+      <b>Título do Produto:
+      </b>
+      {{ product.title }}</p>
+    <p>
+      <b>Preço:
+      </b>
+      {{ product.price | money }}</p>
+    <img
+      src="{{ product.featured_image.src |  image_url: width: '100px'  }}"
+      alt="product.featured_image.alt"
+      width="100px"
+      height="auto" />
+  {% endfor %}
+</div>
+
 
 {% schema %}
   {
