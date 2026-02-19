@@ -1,0 +1,22 @@
+body {
+    background-color:rgb(32, 34, 34);
+    color: rgb(250, 250, 250)
+}
+
+
+.all_products {
+    display: flex;
+    font-family:'Courier New', Courier, monospace;
+    gap: 16px;
+}
+
+.main_product {
+    border: 3px solid rgb(96, 97, 97);
+    padding: 10px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+

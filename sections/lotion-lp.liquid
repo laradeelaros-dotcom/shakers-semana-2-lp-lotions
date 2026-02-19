@@ -1,27 +1,13 @@
+{{ 'style.css' | asset_url | stylesheet_tag }}
+
+
 <h1>{{ page.title }}</h1>
 <p>{{ page.content }}</p>
-
-{% assign product = all_products['principal-locao'] %}
-<p>
-  <b>Título do Produto:
-  </b>
-  {{ product.title }}</p>
-<p>
-  <b>Preço:
-  </b>
-  {{ product.price | money }}</p>
-<img
-  src="{{ product.featured_image.src |  image_url: width: '250px'  }}"
-  alt="product.featured_image.alt"
-  width="250px"
-  height="auto" />
-
-{% assign collection = collections['magic'] %}
-
-<h2>{{ collection.title }}</h2>
-<h3>{{ collection.description }}</h3>
-
-{% for product in collection.products %}
+<div class="main_product">
+  {% assign product = section.settings.produto-principal %}
+  <a href="{{ product.url }}">
+    {{ product.title }}
+  </a>
   <p>
     <b>Título do Produto:
     </b>
@@ -30,17 +16,60 @@
     <b>Preço:
     </b>
     {{ product.price | money }}</p>
-  <img
-    src="{{ product.featured_image.src |  image_url: width: '100px'  }}"
-    alt="product.featured_image.alt"
-    width="100px"
-    height="auto" />
-{% endfor %}
+  <div class="img_main">
+    <img
+      src="{{ product.featured_image.src |  image_url: width: '250px'  }}"
+      alt="product.featured_image.alt"
+      width="250px"
+      height="auto" />
+  </div>
+</div>
+
+
+{% assign collection = section.settings.colecao-principal %}
+<h2>{{ collection.title }}</h2>
+<h3>{{ collection.description }}</h3>
+
+
+<div class="all_products">
+  {% for product in collection.products %}
+    <a href="{{ product.url }}">
+      {{ product.title }}
+    </a>
+    <p>
+      <b>Título do Produto:
+      </b>
+      {{ product.title }}</p>
+    <p>
+      <b>Preço:
+      </b>
+      {{ product.price | money }}</p>
+    <div class="img_all">
+      <img
+        src="{{ product.featured_image.src |  image_url: width: '100px'  }}"
+        alt="product.featured_image.alt"
+        width="100px"
+        height="auto" />
+    </div>
+  {% endfor %}
+</div>
+
 
 {% schema %}
   {
     "name": "lotion-lp",
-    "settings": [],
+    "settings": [
+      {
+        "type": "product",
+        "id": "produto-principal",
+        "label": "Produto Principal"
+      }, {
+        "type": "collection",
+        "id": "colecao-principal",
+        "label": "Coleção Mágica"
+
+      }
+    ],
     "presets": [
       {
         "name": "lotion-lp"
